@@ -4,5 +4,6 @@ include CHANGELOG.txt
 include TODO.txt
 include setup.py
 include ez_setup.py
+include man/*.1
 exclude .svn
 prune .svn

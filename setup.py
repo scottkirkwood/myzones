@@ -4,11 +4,13 @@ from distutils.core import setup
 import re
 
 NAME = 'myzones'
-VER = '0.1.0'
+VER = '0.2.0'
 DIR = 'myzones'
-PY_NAME = 'key_mon'
 DEB_NAME = NAME.replace('-', '')
-RELEASE_FILE = 'docs/RELEASE.rst'
+RELEASE_FILE = 'CHANGELOG.txt'
+RELEASE_FORMAT=r'Version (?P<ver>[^ ]+) \((?P<date>[^)]+)\)'
+DEPENDS=['pytz']
+MAN_FILE='man/%s.1' % NAME
 
 SETUP = dict(
     name = NAME,
@@ -17,10 +19,15 @@ SETUP = dict(
     long_description=
 """Show the timezones you're interested in in a dialog.
 
-If you live in the southern hemisphere like I do, you probably constantly struggle to figure out what time it is in the northern hemisphere.  This is because, when daylight savings time comes around the north jumps forward and we jump back (or vice-versa).  To make things even more complicated, the date and hour that the time changes is usually different.  There will be one or more weeks where time difference is X hours.  Add the classic "off by one" error or a little dyslexia and your bound to get the time wrong and wake somebody up at 8:00 in the morning.
+If you live in the southern hemisphere like I do, you probably constantly struggle to figure out
+what time it is in the northern hemisphere.  This is because, when daylight savings time comes
+around the north jumps forward and we jump back (or vice-versa).  To make things even more
+complicated, the date and hour that the time changes is usually different.  There will be one or
+more weeks where time difference is X hours.  Add the classic "off by one" error or a little
+dyslexia and your bound to get the time wrong and wake somebody up at 8:00 in the morning.
 
-With MyZones you configure the timezones you are most interested in and then run it.
-You can go forward or backwards in time if you are trying to schedule a date in the future, say.
+With MyZones you configure the timezones you are most interested in and then run it.  You can go
+forward or backwards in time if you are trying to schedule a date in the future, say.
 
 A screenshot can be found here : http://myzones.googlecode.com/svn/trunk/doc/screen-shot.png
 
@@ -49,13 +56,15 @@ The configuration file looks something like this::
 
 In the config section, you can put in some configuration information, of which there is currently only one thing to configure.
 
-For the timezones section you can give any names on the left hand side and the time zone (one of the [http://myzones.googlecode.com/svn/trunk/doc/common_zone_names.txt Common Zone Names] )
-If you want the timezones to appear in a certain order you need to prepend the name with 1|, 2|, etc., and is thus recommended.
+For the timezones section you can give any names on the left hand side and the time zone (one of
+the [http://myzones.googlecode.com/svn/trunk/doc/common_zone_names.txt Common Zone Names] ) If you
+want the timezones to appear in a certain order you need to prepend the name with 1|, 2|, etc., and
+is thus recommended.
 """,
     author='Scott Kirkwood',
-    author_email='scottakirkwood@gmail.com',
+    author_email='scott@forusers.com',
     url='http://code.google.com/p/%s/' % NAME,
-    download_url='http://%s.googlecode.com/files/%s-%s.zip' (NAME, NAME, VER),
+    download_url='http://%s.googlecode.com/files/%s-%s.zip' % (NAME, NAME, VER),
     packages=['myzones'],
     scripts=['scripts/myzones'],
     keywords=['timezones', 'utility', 'wxPython', 'python', 'pytz'],

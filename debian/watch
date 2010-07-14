@@ -1,0 +1,3 @@
+version=3
+http://code.google.com/p/myzones/downloads/list \
+  http://myzones[.]googlecode[.]com/files/myzones_([0-9.]+)[.]tar[.]gz
